@@ -1,62 +1,64 @@
+import os
 import re
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
+
+def get_chrome_driver():
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    # Heroku buildpack에서 설정한 환경 변수 사용:
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    service = Service(os.environ.get("CHROMEDRIVER_PATH"))
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
 
 def fetch_kt_jobs():
     print("🚀 크롤링 실행 중...")
-
-    service = Service(ChromeDriverManager().install())
-    options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-
-    driver = webdriver.Chrome(service=service, options=options)
+    driver = get_chrome_driver()
     url = "https://recruit.kt.com/careers"
     driver.get(url)
 
     try:
         WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "article.ebox")))
         print("✅ 채용 공고 로딩 완료")
-    except:
-        print("❌ 채용 공고를 찾을 수 없음")
+    except Exception as e:
+        print("❌ 채용 공고를 찾을 수 없음:", e)
         driver.quit()
         return []
 
     jobs = []
     for job in driver.find_elements(By.CSS_SELECTOR, "article.ebox"):
         try:
-            # 제목 찾기: h4 태그를 우선 시도하고, 없으면 h3, a, 등 대체
+            # 제목 찾기: h4 > h3 > a 순서로 시도
             try:
                 title_tag = WebDriverWait(job, 10).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, "h4"))
                 )
                 title = title_tag.text.strip()
-            except:
+            except Exception:
                 try:
                     title_tag = job.find_element(By.CSS_SELECTOR, "h3")
                     title = title_tag.text.strip()
-                except:
+                except Exception:
                     try:
                         title_tag = job.find_element(By.CSS_SELECTOR, "a")
                         title = title_tag.text.strip()
-                    except:
-                        # 오류 메시지 출력 대신 그냥 건너뛰기
+                    except Exception:
                         continue
 
-            # 링크 찾기
             try:
                 link_tag = job.find_element(By.CSS_SELECTOR, "a")
                 raw_link = link_tag.get_attribute("href")
-            except:
+            except Exception:
                 raw_link = "/careers/fallback"
             link = raw_link if raw_link.startswith("http") else "https://recruit.kt.com" + raw_link
 
-            # 기간과 D-Day 정보 가져오기
             date_tag = job.find_element(By.CSS_SELECTOR, ".date")
             dday_tag = job.find_element(By.CSS_SELECTOR, ".d-day")
             date = date_tag.text.strip()
@@ -67,8 +69,7 @@ def fetch_kt_jobs():
             company = company_match.group(1) if company_match else "KT"
 
             jobs.append({"title": title, "company": company, "date": date, "dday": dday, "link": link})
-        except:
-            # 오류가 발생해도 오류 메시지를 출력하지 않고 건너뜀
+        except Exception:
             continue
 
     driver.quit()
