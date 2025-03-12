@@ -12,9 +12,22 @@ def get_chrome_driver():
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    # Heroku buildpack에서 설정한 환경 변수 사용:
-    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-    service = Service(os.environ.get("CHROMEDRIVER_PATH"))
+    
+    # Heroku buildpack에서 환경 변수가 설정되어야 함.
+    # 만약 설정되지 않았다면, 기본 경로를 사용합니다.
+    binary = os.environ.get("GOOGLE_CHROME_BIN")
+    if not binary:
+        # Heroku buildpack-chrome-for-testing의 기본 경로 중 하나일 수 있습니다.
+        binary = "/app/.apt/usr/bin/google-chrome"
+        print("GOOGLE_CHROME_BIN 환경변수가 설정되어 있지 않아 기본 경로를 사용합니다:", binary)
+    chrome_options.binary_location = binary
+
+    # CHROMEDRIVER_PATH 환경 변수도 사용
+    chromedriver_path = os.environ.get("CHROMEDRIVER_PATH")
+    if not chromedriver_path:
+        raise Exception("CHROMEDRIVER_PATH 환경변수가 설정되어 있지 않습니다.")
+    
+    service = Service(chromedriver_path)
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
@@ -25,7 +38,9 @@ def fetch_kt_jobs():
     driver.get(url)
 
     try:
-        WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "article.ebox")))
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, "article.ebox"))
+        )
         print("✅ 채용 공고 로딩 완료")
     except Exception as e:
         print("❌ 채용 공고를 찾을 수 없음:", e)
@@ -64,7 +79,6 @@ def fetch_kt_jobs():
             date = date_tag.text.strip()
             dday = dday_tag.text.strip()
 
-            # 회사명 추출 (대괄호 [] 안의 내용)
             company_match = re.search(r"\[(.*?)\]", title)
             company = company_match.group(1) if company_match else "KT"
 
