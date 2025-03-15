@@ -2,9 +2,9 @@
 import re
 import json
 import os
-import subprocess
-from selenium_kt import fetch_kt_jobs  # 채용 공고 크롤링 함수 모듈
+import base64
 import requests
+from selenium_kt import fetch_kt_jobs  # 채용 공고 크롤링 함수 모듈
 
 # 텔레그램 메시지 전송 함수 (requests 이용)
 def send_message(token, chat_id, text):
@@ -17,6 +17,12 @@ def send_message(token, chat_id, text):
 TOKEN = "7801153388:AAFgEMsO4hNvjKMu468i5mAgTtaFtdOEl7E"  # BotFather로 받은 봇 토큰
 CHAT_ID = "7692140662"  # 확인한 채팅 ID (문자열)
 DATA_FILE = "job_postings.json"  # 이전 공고를 저장할 파일
+
+# GitHub API 관련 설정 (환경 변수에서 가져오기)
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")  # Personal Access Token
+REPO_OWNER = os.environ.get("GITHUB_REPO_OWNER")  # 예: "your_github_username"
+REPO_NAME = os.environ.get("GITHUB_REPO_NAME")    # 예: "your_repo_name"
+FILE_PATH = DATA_FILE  # 저장소 내 파일 경로
 
 def load_previous_jobs():
     """이전 실행 시 저장된 공고 데이터를 JSON 파일에서 로드"""
@@ -41,18 +47,48 @@ def get_new_jobs(current_jobs, previous_jobs):
     new_jobs = [job for job in current_jobs if job["link"] not in previous_links]
     return new_jobs
 
-def git_push():
-    """job_postings.json 파일의 변경사항을 Git에 커밋하고 Heroku 원격 저장소로 푸시"""
-    try:
-        # 모든 변경사항 스테이징
-        subprocess.run(["git", "add", "."], check=True)
-        # 커밋
-        subprocess.run(["git", "commit", "-m", "Update job_postings.json"], check=True)
-        # Heroku 원격 저장소로 푸시 (브랜치 이름은 master로 가정)
-        subprocess.run(["git", "push", "heroku", "master"], check=True)
-        print("✅ Git push 완료")
-    except subprocess.CalledProcessError as e:
-        print("❌ Git push 실패:", e)
+# GitHub API를 사용해 job_postings.json 파일을 업데이트하는 함수
+def update_file_on_github(commit_message="Update job_postings.json"):
+    """GitHub API를 이용하여 파일 내용을 업데이트"""
+    if not GITHUB_TOKEN or not REPO_OWNER or not REPO_NAME:
+        print("❌ GitHub 관련 환경 변수가 설정되어 있지 않습니다.")
+        return
+
+    # 1. 현재 파일 내용을 base64 인코딩한 값 준비
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        file_content = f.read()
+    encoded_content = base64.b64encode(file_content.encode("utf-8")).decode("utf-8")
+
+    # 2. 기존 파일 정보를 조회하여 SHA 값 가져오기
+    url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{FILE_PATH}"
+    headers = {
+        "Authorization": f"Bearer {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github+json"
+    }
+    get_resp = requests.get(url, headers=headers)
+    if get_resp.status_code == 200:
+        file_info = get_resp.json()
+        sha = file_info["sha"]
+    elif get_resp.status_code == 404:
+        # 파일이 없으면 새로 생성할 수 있음
+        sha = None
+    else:
+        print("❌ 파일 정보를 가져오지 못했습니다:", get_resp.text)
+        return
+
+    # 3. 파일 업데이트 API 호출 (PUT)
+    data = {
+        "message": commit_message,
+        "content": encoded_content,
+    }
+    if sha:
+        data["sha"] = sha
+
+    put_resp = requests.put(url, headers=headers, json=data)
+    if put_resp.status_code in (200, 201):
+        print("✅ GitHub 파일 업데이트 성공!")
+    else:
+        print("❌ GitHub 파일 업데이트 실패:", put_resp.text)
 
 def main():
     print("🚀 크롤링 실행 중...")
@@ -83,8 +119,8 @@ def main():
     save_jobs(current_jobs)
     print("✅ 스크립트 실행 완료")
     
-    # Git에 변경 사항을 커밋하고 푸시
-    git_push()
+    # GitHub API를 통해 JSON 파일 업데이트 (커밋 및 푸시 효과)
+    update_file_on_github()
 
 if __name__ == "__main__":
     main()
