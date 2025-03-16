@@ -19,9 +19,9 @@ CHAT_ID = "7692140662"  # 확인한 채팅 ID (문자열)
 DATA_FILE = "job_postings.json"  # 이전 공고를 저장할 파일
 
 # GitHub API 관련 설정 (환경 변수에서 가져오기)
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")  # Personal Access Token
-REPO_OWNER = os.environ.get("GITHUB_REPO_OWNER")  # 예: "your_github_username"
-REPO_NAME = os.environ.get("GITHUB_REPO_NAME")    # 예: "your_repo_name"
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")      # Personal Access Token
+REPO_OWNER = os.environ.get("GITHUB_REPO_OWNER")     # 예: "Soong22"
+REPO_NAME = os.environ.get("GITHUB_REPO_NAME")       # 예: "New_Posting_Alert"
 FILE_PATH = DATA_FILE  # 저장소 내 파일 경로
 
 def load_previous_jobs():
@@ -54,7 +54,7 @@ def update_file_on_github(commit_message="Update job_postings.json"):
         print("❌ GitHub 관련 환경 변수가 설정되어 있지 않습니다.")
         return
 
-    # 1. 현재 파일 내용을 base64 인코딩한 값 준비
+    # 1. 현재 파일 내용을 base64 인코딩
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         file_content = f.read()
     encoded_content = base64.b64encode(file_content.encode("utf-8")).decode("utf-8")
