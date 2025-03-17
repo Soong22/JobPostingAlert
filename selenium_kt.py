@@ -17,12 +17,11 @@ def get_chrome_driver():
     # 만약 설정되지 않았다면, 기본 경로를 사용합니다.
     binary = os.environ.get("GOOGLE_CHROME_BIN")
     if not binary:
-        # Heroku buildpack-chrome-for-testing의 기본 경로 중 하나일 수 있습니다.
         binary = "/app/.apt/usr/bin/google-chrome"
         print("GOOGLE_CHROME_BIN 환경변수가 설정되어 있지 않아 기본 경로를 사용합니다:", binary)
     chrome_options.binary_location = binary
 
-    # CHROMEDRIVER_PATH 환경 변수도 사용
+    # CHROMEDRIVER_PATH 환경 변수 사용
     chromedriver_path = os.environ.get("CHROMEDRIVER_PATH")
     if not chromedriver_path:
         raise Exception("CHROMEDRIVER_PATH 환경변수가 설정되어 있지 않습니다.")
