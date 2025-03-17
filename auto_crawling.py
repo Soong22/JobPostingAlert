@@ -4,6 +4,7 @@ import json
 import os
 import base64
 import requests
+from urllib.parse import urlparse, urlunparse
 from selenium_kt import fetch_kt_jobs  # 채용 공고 크롤링 함수 모듈
 
 # 텔레그램 메시지 전송 함수 (requests 이용)
@@ -24,16 +25,36 @@ REPO_OWNER = os.environ.get("GITHUB_REPO_OWNER")     # 예: "Soong22"
 REPO_NAME = os.environ.get("GITHUB_REPO_NAME")       # 예: "New_Posting_Alert"
 FILE_PATH = DATA_FILE  # 저장소 내 파일 경로
 
+def normalize_link(link):
+    """
+    링크를 정규화하여 쿼리스트링이나 fragment를 제거하고
+    마지막 '/'를 제거합니다.
+    """
+    parsed = urlparse(link)
+    normalized = parsed._replace(query="", fragment="")
+    url = urlunparse(normalized).rstrip("/")
+    return url
+
 def load_previous_jobs():
-    """이전 실행 시 저장된 공고 데이터를 JSON 파일에서 로드"""
+    """
+    이전 실행 시 저장된 공고 데이터를 JSON 파일에서 로드합니다.
+    로컬 파일이 없으면 GitHub API를 통해 데이터를 가져옵니다.
+    """
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
-    else:
-        return []
+    elif GITHUB_TOKEN and REPO_OWNER and REPO_NAME:
+        url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{FILE_PATH}"
+        headers = {"Authorization": f"Bearer {GITHUB_TOKEN}"}
+        resp = requests.get(url, headers=headers)
+        if resp.status_code == 200:
+            file_info = resp.json()
+            content = base64.b64decode(file_info["content"]).decode("utf-8")
+            return json.loads(content)
+    return []
 
 def save_jobs(jobs):
-    """현재 공고 데이터를 JSON 파일에 저장"""
+    """현재 크롤링 결과를 JSON 파일에 저장"""
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(jobs, f, ensure_ascii=False, indent=2)
 
@@ -41,15 +62,14 @@ def get_new_jobs(current_jobs, previous_jobs):
     """
     현재 크롤링된 공고 목록과 이전에 저장된 공고 목록을 비교하여,
     이전에 없던 새로운 공고 목록을 반환합니다.
-    여기서는 공고의 'link' 값을 고유 식별자로 사용합니다.
+    공고의 'link' 값을 정규화하여 고유 식별자로 사용합니다.
     """
-    previous_links = {job["link"] for job in previous_jobs}
-    new_jobs = [job for job in current_jobs if job["link"] not in previous_links]
+    previous_links = {normalize_link(job["link"]) for job in previous_jobs}
+    new_jobs = [job for job in current_jobs if normalize_link(job["link"]) not in previous_links]
     return new_jobs
 
-# GitHub API를 사용해 job_postings.json 파일을 업데이트하는 함수
 def update_file_on_github(commit_message="Update job_postings.json"):
-    """GitHub API를 이용하여 파일 내용을 업데이트"""
+    """GitHub API를 이용하여 파일 내용을 업데이트합니다."""
     if not GITHUB_TOKEN or not REPO_OWNER or not REPO_NAME:
         print("❌ GitHub 관련 환경 변수가 설정되어 있지 않습니다.")
         return
@@ -70,7 +90,6 @@ def update_file_on_github(commit_message="Update job_postings.json"):
         file_info = get_resp.json()
         sha = file_info["sha"]
     elif get_resp.status_code == 404:
-        # 파일이 없으면 새로 생성할 수 있음
         sha = None
     else:
         print("❌ 파일 정보를 가져오지 못했습니다:", get_resp.text)
@@ -97,6 +116,9 @@ def main():
     
     previous_jobs = load_previous_jobs()
     new_jobs = get_new_jobs(current_jobs, previous_jobs)
+    
+    # '접수마감'인 공고는 알림 대상에서 제외합니다.
+    new_jobs = [job for job in new_jobs if "접수마감" not in job.get("date", "") and "접수마감" not in job.get("dday", "")]
     
     if new_jobs:
         for job in new_jobs:
