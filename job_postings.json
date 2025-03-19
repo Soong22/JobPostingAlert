@@ -1,1 +1,415 @@
-[]
+[
+  {
+    "title": "[PLAYD] 퍼포먼스마케팅AE 경력직 채용",
+    "company": "PLAYD",
+    "date": "2025.03.06 ~ 2025.03.20",
+    "dday": "D-1",
+    "link": "https://recruit.kt.com/careers/209624"
+  },
+  {
+    "title": "[kt M mobile] '25년 상반기 수시채용",
+    "company": "kt M mobile",
+    "date": "2025.03.13 ~ 2025.03.23",
+    "dday": "D-4",
+    "link": "https://recruit.kt.com/careers/210566"
+  },
+  {
+    "title": "[kt telecop] 2025년 인사팀(육아휴직대체) 채용",
+    "company": "kt telecop",
+    "date": "2025.03.13 ~ 2025.03.23",
+    "dday": "D-4",
+    "link": "https://recruit.kt.com/careers/210541"
+  },
+  {
+    "title": "[kt telecop] 2025년 인사/구매 분야 채용",
+    "company": "kt telecop",
+    "date": "2025.03.13 ~ 2025.03.23",
+    "dday": "D-4",
+    "link": "https://recruit.kt.com/careers/210535"
+  },
+  {
+    "title": "[kt service남부] '25년 3월 경력/신입사원 장애인/보훈 제한경쟁 채용",
+    "company": "kt service남부",
+    "date": "2025.03.10 ~ 2025.03.23",
+    "dday": "D-4",
+    "link": "https://recruit.kt.com/careers/210021"
+  },
+  {
+    "title": "[kt service남부] '25년 3월 경력/신입사원 수시채용",
+    "company": "kt service남부",
+    "date": "2025.03.10 ~ 2025.03.23",
+    "dday": "D-4",
+    "link": "https://recruit.kt.com/careers/210014"
+  },
+  {
+    "title": "[kt sports] '25년 선수단 운영 지원 분야 계약직 사원 모집",
+    "company": "kt sports",
+    "date": "2025.03.18 ~ 2025.03.24",
+    "dday": "D-5",
+    "link": "https://recruit.kt.com/careers/210942"
+  },
+  {
+    "title": "[KT] 2025년 경력채용(SW/IT 기술조사)",
+    "company": "KT",
+    "date": "2025.03.12 ~ 2025.03.26",
+    "dday": "D-7",
+    "link": "https://recruit.kt.com/careers/210326"
+  },
+  {
+    "title": "[KT] 2025년 경력채용(Account)",
+    "company": "KT",
+    "date": "2025.03.12 ~ 2025.03.26",
+    "dday": "D-7",
+    "link": "https://recruit.kt.com/careers/210323"
+  },
+  {
+    "title": "[KT] 2025년 경력채용(Video Codec 표준기술 개발 )",
+    "company": "KT",
+    "date": "2025.03.14 ~ 2025.03.30",
+    "dday": "D-11",
+    "link": "https://recruit.kt.com/careers/210706"
+  },
+  {
+    "title": "[KT] 2025년 경력채용(3GPP 표준기술 개발)",
+    "company": "KT",
+    "date": "2025.03.14 ~ 2025.03.30",
+    "dday": "D-11",
+    "link": "https://recruit.kt.com/careers/210704"
+  },
+  {
+    "title": "[KT] 2025년 KT 대졸신입 채용",
+    "company": "KT",
+    "date": "2025.03.18 ~ 2025.03.31",
+    "dday": "D-12",
+    "link": "https://recruit.kt.com/careers/210575"
+  },
+  {
+    "title": "[kt alpha] KT알파쇼핑 방송 PD 경력 채용",
+    "company": "kt alpha",
+    "date": "2025.03.13 ~ 2025.03.31",
+    "dday": "D-12",
+    "link": "https://recruit.kt.com/careers/210542"
+  },
+  {
+    "title": "[KT] 2025년 KT 석사신입 채용(R&D)",
+    "company": "KT",
+    "date": "2025.03.18 ~ 2025.03.31",
+    "dday": "D-12",
+    "link": "https://recruit.kt.com/careers/210530"
+  },
+  {
+    "title": "[KT] 2025년 AX 딜리버리 전문센터 우수인재 채용 공모 - (AX 경력 #4)",
+    "company": "KT",
+    "date": "2025.03.12 ~ 2025.03.31",
+    "dday": "D-12",
+    "link": "https://recruit.kt.com/careers/210097"
+  },
+  {
+    "title": "[kt alpha] 판촉물 B2B 특판 영업 경력 채용",
+    "company": "kt alpha",
+    "date": "2025.03.07 ~ 2025.03.31",
+    "dday": "D-12",
+    "link": "https://recruit.kt.com/careers/209808"
+  },
+  {
+    "title": "[kt cloud] 2025년 경력직 지역인재 채용 (경북)",
+    "company": "kt cloud",
+    "date": "2025.03.05 ~ 2025.03.31",
+    "dday": "D-12",
+    "link": "https://recruit.kt.com/careers/209563"
+  },
+  {
+    "title": "[nasmedia] 2025년 3월 nasmedia 채용",
+    "company": "nasmedia",
+    "date": "2025.03.01 ~ 2025.03.31",
+    "dday": "D-12",
+    "link": "https://recruit.kt.com/careers/209282"
+  },
+  {
+    "title": "[KT] 2025년 AI혁신 우수인재 채용 - 전략사업컨설팅 TMO(AX 경력 #2)",
+    "company": "KT",
+    "date": "2025.02.21 ~ 2025.03.31",
+    "dday": "D-12",
+    "link": "https://recruit.kt.com/careers/208502"
+  },
+  {
+    "title": "[kt estate]경력사원 수시채용(공사관리-기계/전기)",
+    "company": "kt estate",
+    "date": "2025.03.05 ~ 2025.04.04",
+    "dday": "D-15",
+    "link": "https://recruit.kt.com/careers/209546"
+  },
+  {
+    "title": "[kt telecop] 2025년 B2C영업 분야 상시채용",
+    "company": "kt telecop",
+    "date": "2024.12.09 ~ 2025.06.30",
+    "dday": "D-102",
+    "link": "https://recruit.kt.com/careers/201117"
+  },
+  {
+    "title": "[kt cloud] 2025년 IDC구축현장 프로젝트 계약직 채용 (부천)",
+    "company": "kt cloud",
+    "date": "2025.01.02 ~ 2025.12.31",
+    "dday": "D-287",
+    "link": "https://recruit.kt.com/careers/203308"
+  },
+  {
+    "title": "[kt cloud] 2025년 DC구축현장 프로젝트 계약직 채용 (구로)",
+    "company": "kt cloud",
+    "date": "2025.01.02 ~ 2025.12.31",
+    "dday": "D-287",
+    "link": "https://recruit.kt.com/careers/203242"
+  },
+  {
+    "title": "[KT] KT 디지털혁신분야 임원급 상시채용",
+    "company": "KT",
+    "date": "2024.02.16 ~ 2025.12.31",
+    "dday": "D-287",
+    "link": "https://recruit.kt.com/careers/171610"
+  },
+  {
+    "title": "[kt estate] 경력사원 상시채용(인재풀 등록)",
+    "company": "kt estate",
+    "date": "2022.03.25 ~ 2025.12.31",
+    "dday": "D-287",
+    "link": "https://recruit.kt.com/careers/94960"
+  },
+  {
+    "title": "[알티미디어] 2024년 신입/경력사원 채용",
+    "company": "알티미디어",
+    "date": "2024.02.16 ~ 2024.03.03",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/151493"
+  },
+  {
+    "title": "[ initech ] 보안분야 영업대표 모집",
+    "company": " initech ",
+    "date": "2024.04.18 ~ 2024.04.30",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/178859"
+  },
+  {
+    "title": "[BC카드] 2024년 하반기 비씨카드 신입사원 채용",
+    "company": "BC카드",
+    "date": "2024.09.23 ~ 2024.10.04",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/192500"
+  },
+  {
+    "title": "[kt cloud] 2024년 하반기 경력직 공개 채용",
+    "company": "kt cloud",
+    "date": "2024.11.01 ~ 2024.11.30",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/197088"
+  },
+  {
+    "title": "[kt cloud] 2024년 IDC구축현장 프로젝트 계약직 채용 (가산)",
+    "company": "kt cloud",
+    "date": "2024.09.23 ~ 2024.12.31",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/181368"
+  },
+  {
+    "title": "kt telecop 사내추천 모집 상시공고",
+    "company": "KT",
+    "date": "2024.05.14 ~ 2024.12.31",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/179775"
+  },
+  {
+    "title": "[kt cloud] 2024년 IDC구축현장 프로젝트 계약직 채용 (경북)",
+    "company": "kt cloud",
+    "date": "2024.01.04 ~ 2024.12.31",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/167343"
+  },
+  {
+    "title": "[kt cloud] 2024년 IDC구축현장 프로젝트 계약직 채용 (부천)",
+    "company": "kt cloud",
+    "date": "2024.01.03 ~ 2024.12.31",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/167068"
+  },
+  {
+    "title": "[HCN] 2025년 상반기 신입(인턴)사원/신입사원 공개채용",
+    "company": "HCN",
+    "date": "2024.12.31 ~ 2025.01.12",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/203040"
+  },
+  {
+    "title": "[kt M mobile] '25년 영업/마케팅 부문 공개채용(경력)",
+    "company": "kt M mobile",
+    "date": "2025.01.22 ~ 2025.02.02",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205313"
+  },
+  {
+    "title": "[kt M mobile] '25년 영업/마케팅 부문 공개채용(신입/경력)",
+    "company": "kt M mobile",
+    "date": "2025.01.22 ~ 2025.02.02",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205312"
+  },
+  {
+    "title": "[kt M mobile] '25년 사업기획/관리 부문 공개채용(경력)",
+    "company": "kt M mobile",
+    "date": "2025.01.22 ~ 2025.02.02",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205309"
+  },
+  {
+    "title": "[kt M mobile] '25년 사업기획/관리 부문 공개채용(신입)",
+    "company": "kt M mobile",
+    "date": "2025.01.22 ~ 2025.02.02",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205305"
+  },
+  {
+    "title": "[kt M mobile] '25년 경영기획/지원 부문 공개채용(경력)",
+    "company": "kt M mobile",
+    "date": "2025.01.22 ~ 2025.02.02",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205293"
+  },
+  {
+    "title": "[kt M mobile] '25년 경영기획/지원 부문 공개채용(신입)",
+    "company": "kt M mobile",
+    "date": "2025.01.22 ~ 2025.02.02",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205291"
+  },
+  {
+    "title": "[kt commerce] 2025년 신입사원 수시채용 (경영기획)",
+    "company": "kt commerce",
+    "date": "2025.01.22 ~ 2025.02.13",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205455"
+  },
+  {
+    "title": "[kt telecop] 2025년 보안분야 기술/시장 조사분석 채용",
+    "company": "kt telecop",
+    "date": "2025.01.24 ~ 2025.02.16",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205847"
+  },
+  {
+    "title": "[kt telecop] 2025년 SI사업 분야 채용",
+    "company": "kt telecop",
+    "date": "2025.01.24 ~ 2025.02.16",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205836"
+  },
+  {
+    "title": "[kt estate] 2025년 경력사원 수시채용(IT기획)",
+    "company": "kt estate",
+    "date": "2025.01.17 ~ 2025.02.16",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/205093"
+  },
+  {
+    "title": "[KT] 2025년도 가을학기 KT AI석사과정 신입생 모집(채용연계형 계약학과)",
+    "company": "KT",
+    "date": "2025.01.20 ~ 2025.02.19",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/204956"
+  },
+  {
+    "title": "[kt skylife] 2025년 경력직 공개채용(무선사업, IT, IT기획/운영)",
+    "company": "kt skylife",
+    "date": "2025.02.14 ~ 2025.02.25",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/207764"
+  },
+  {
+    "title": "[kt skylife] 2025년 신입사원 공개채용",
+    "company": "kt skylife",
+    "date": "2025.02.14 ~ 2025.02.25",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/207756"
+  },
+  {
+    "title": "[KT] 2025년 국내변호사 채용",
+    "company": "KT",
+    "date": "2025.02.19 ~ 2025.03.03",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/208167"
+  },
+  {
+    "title": "[PLAYD] 영상 기획 PD 경력직 채용",
+    "company": "PLAYD",
+    "date": "2025.02.28 ~ 2025.03.09",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209240"
+  },
+  {
+    "title": "[KT] 2025년 경력채용(Tech Talent Sourcer)",
+    "company": "KT",
+    "date": "2025.02.19 ~ 2025.03.09",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/208246"
+  },
+  {
+    "title": "[kt p&m] 2025년 신입사원 채용",
+    "company": "kt p&m",
+    "date": "2025.02.28 ~ 2025.03.11",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209193"
+  },
+  {
+    "title": "[kt netcore] 2025 경력직원 채용 (경영지원 분야)",
+    "company": "kt netcore",
+    "date": "2025.03.05 ~ 2025.03.12",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209556"
+  },
+  {
+    "title": "[kt netcore] 2025 신입직원 채용(안전 분야)",
+    "company": "kt netcore",
+    "date": "2025.03.05 ~ 2025.03.12",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209553"
+  },
+  {
+    "title": "[kt netcore] 2025 경력직원 채용(감사분야)",
+    "company": "kt netcore",
+    "date": "2025.03.05 ~ 2025.03.12",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209548"
+  },
+  {
+    "title": "[KT] 2025년 AICT 우수인재 채용(B2B/B2G 사업 아키텍처)",
+    "company": "KT",
+    "date": "2025.02.27 ~ 2025.03.12",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209124"
+  },
+  {
+    "title": "[KT] 2025년 AICT 우수인재 채용(B2B 사업개발/컨설팅)",
+    "company": "KT",
+    "date": "2025.02.27 ~ 2025.03.12",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209121"
+  },
+  {
+    "title": "[kt cs] 2025년 상반기 경력직 채용",
+    "company": "kt cs",
+    "date": "2025.03.04 ~ 2025.03.13",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209339"
+  },
+  {
+    "title": "[KT] 2025년 AICT 우수인재 채용(B2B/B2G 사업 이행)",
+    "company": "KT",
+    "date": "2025.02.27 ~ 2025.03.13",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209126"
+  },
+  {
+    "title": "[kt telecop] 2025년 3차 KT텔레캅 SG사원 상시채용",
+    "company": "kt telecop",
+    "date": "2025.03.01 ~ 2025.03.16",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/208813"
+  }
+]
