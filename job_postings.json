@@ -1,12 +1,5 @@
 [
   {
-    "title": "[PLAYD] 퍼포먼스마케팅AE 경력직 채용",
-    "company": "PLAYD",
-    "date": "2025.03.06 ~ 2025.03.20",
-    "dday": "D-0",
-    "link": "https://recruit.kt.com/careers/209624"
-  },
-  {
     "title": "[kt M mobile] '25년 상반기 수시채용",
     "company": "kt M mobile",
     "date": "2025.03.13 ~ 2025.03.23",
@@ -418,5 +411,12 @@
     "date": "2025.03.01 ~ 2025.03.16",
     "dday": "접수마감",
     "link": "https://recruit.kt.com/careers/208813"
+  },
+  {
+    "title": "[PLAYD] 퍼포먼스마케팅AE 경력직 채용",
+    "company": "PLAYD",
+    "date": "2025.03.06 ~ 2025.03.20",
+    "dday": "접수마감",
+    "link": "https://recruit.kt.com/careers/209624"
   }
 ]
